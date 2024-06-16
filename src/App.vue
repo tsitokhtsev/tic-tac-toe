@@ -171,11 +171,6 @@ function reset() {
 </template>
 
 <style>
-body {
-    display: flex;
-    place-items: center;
-}
-
 .wrapper {
     display: flex;
     flex-direction: column;
