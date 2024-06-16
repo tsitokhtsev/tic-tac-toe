@@ -1,4 +1,4 @@
-function areEqual(a: string, b: string, c: string) {
+export function areEqual(a: string, b: string, c: string) {
     return a === b && b === c && a !== '';
 }
 

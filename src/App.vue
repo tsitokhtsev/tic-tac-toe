@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Spot from './components/Spot.vue';
-import { areEqual, isPlayerX } from './utils.ts';
+import { areEqual, isPlayerX } from './utils';
 
 const board = ref([
     ['', '', ''],
@@ -9,11 +9,11 @@ const board = ref([
     ['', '', ''],
 ]);
 
-const winner = ref(null);
+const winner = ref<string | null>(null);
 
 const currentPlayer = ref('X');
 
-const scores = { X: 1, O: -1, tie: 0 };
+const scores: Record<string, number> = { X: 1, O: -1, tie: 0 };
 
 const playerX = 'X';
 const playerY = 'O';
@@ -57,12 +57,16 @@ function nextMove() {
         }
     }
 
-    board.value[move.i][move.j] = currentPlayer.value;
+    if (move) {
+        board.value[move.i][move.j] = currentPlayer.value;
+    }
 }
 
 function minimax(isMaximizer: boolean) {
-    if (checkWinner()) {
-        return scores[checkWinner()];
+    const result = checkWinner();
+
+    if (result) {
+        return scores[result];
     }
 
     let bestScore = isMaximizer ? -Infinity : Infinity;
