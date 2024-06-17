@@ -166,7 +166,7 @@ function reset() {
             {{ winner === 'tie' ? 'It is a tie!' : `${winner} is a winner!` }}
         </h2>
 
-        <button @click="reset">Reset</button>
+        <button v-if="winner" @click="reset">Reset</button>
     </div>
 </template>
 

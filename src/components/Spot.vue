@@ -14,7 +14,7 @@ defineProps<{
 .spot {
     width: 100px;
     height: 100px;
-    border: 1px solid #000;
+    border: 1px solid var(--vt-c-white);
     display: flex;
     justify-content: center;
     align-items: center;
